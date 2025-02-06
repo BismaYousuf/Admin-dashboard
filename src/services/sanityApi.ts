@@ -140,6 +140,7 @@ export interface Product {
 
 //----------------------------------------------- Fetch Food Items
 export async function sanityFetch(query: string): Promise<Product[]> {
+  
   try {
     const res = await client.fetch(`${query}{
       _id,
@@ -148,9 +149,13 @@ export async function sanityFetch(query: string): Promise<Product[]> {
       category,
       "image": image.asset->url
     }`);
+  console.log("🎶");
+
     console.log("Fetched food items:", res); // Debugging log
     return res;
+
   } catch (error) {
+    console.log("👀");
     console.error("Error fetching food items:", error);
     throw error;
   }
